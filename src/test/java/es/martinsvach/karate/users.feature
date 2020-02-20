@@ -2,7 +2,7 @@ Feature: Test Ryanair Users API
   Background:
   	  * def baseUrl = 'http://127.0.0.1:8900'
 
-  Scenario: Create an user
+  Scenario: Create a user with success
     Given url baseUrl
     And path 'user'
     And header Content-Type = 'application/json'
