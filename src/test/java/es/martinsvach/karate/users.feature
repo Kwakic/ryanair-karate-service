@@ -9,3 +9,13 @@ Feature: Test Ryanair Users API
     And request { name: 'Ricardo Molina', email: 'toorop@mixmail.com' }
     When method post
     Then status 201
+	
+	
+	Scenario: Create a user with success
+    Given url baseUrl
+    And path 'user'
+    And header Content-Type = 'application/json'
+    And request { name: 'Ricardo Molina', email: 'tooropmixmail.com' }
+    When method post
+    Then status 500
+	And message: "malformed email"
