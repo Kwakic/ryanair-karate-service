@@ -11,11 +11,11 @@ Feature: Test Ryanair Users API
     Then status 201
 	
 	
-	Scenario: Create a user with success
+  Scenario: Create a user with error
     Given url baseUrl
     And path 'user'
     And header Content-Type = 'application/json'
     And request { name: 'Ricardo Molina', email: 'tooropmixmail.com' }
     When method post
     Then status 500
-	And message: "malformed email"
+	And match response == {"timestamp": "#notnull", "status": 500,"error": "Internal Server Error","message": "malformed email","path": "/user"	}
