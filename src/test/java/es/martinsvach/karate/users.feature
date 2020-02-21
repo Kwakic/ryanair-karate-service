@@ -1,16 +1,18 @@
 Feature: Test Ryanair Users API
   Background:
   	  * def baseUrl = 'http://127.0.0.1:8900'
+  	  * def user = callonce read('create_user.feature')
+  	 
 
-  Scenario: Create a user with success
+ Scenario: Get a user by id
     Given url baseUrl
     And path 'user'
-    And header Content-Type = 'application/json'
-    And request { name: 'Ricardo Molina', email: 'toorop@mixmail.com' }
-    When method post
-    Then status 201
+    And param id = user.response.id
+    When method get
+    Then status 200
 	  
 	  Scenario Outline: Create a user with error
+	   * print 'POPO:', user.response.id
     Given url baseUrl
     And path 'user'
     And header Content-Type = 'application/json'
