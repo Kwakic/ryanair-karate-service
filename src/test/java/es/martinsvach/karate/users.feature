@@ -12,7 +12,6 @@ Feature: Test Ryanair Users API
     Then status 200
 	  
 	  Scenario Outline: Create a user with error
-	   * print 'POPO:', user.response.id
     Given url baseUrl
     And path 'user'
     And header Content-Type = 'application/json'
