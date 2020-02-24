@@ -9,5 +9,6 @@ Feature: Test Ryanair Users API
     And request { name: 'Ricardo Molina', email: 'toorop@mixmail.com' }
     When method post
     Then status 201
-    And print response
+    And print response 
+    
     
