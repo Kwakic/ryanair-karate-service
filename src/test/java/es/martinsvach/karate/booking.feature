@@ -29,10 +29,8 @@ Feature: Manage booking
     And match response.origin == Desfrom 
     And match response.destination == Desto
 
-#error by ConstraintViolationException
 
-
- Scenario: Create boooking user with success
+ Scenario: Create boooking user with Internal Server Error
   * def booking =   
 """
     {
@@ -58,6 +56,7 @@ Feature: Manage booking
   "path": "/booking"
      }  
     """
+
 
   Scenario: Get booking info by inserting valid ID leaving date empty
     Given url baseUrl
