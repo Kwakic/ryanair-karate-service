@@ -98,8 +98,8 @@ POST /user/
 
 #### Response and expected result
 
-Status 201<br />
-Print response for further use<br />
+- Status 201<br />
+- Print response for further use<br />
 
 
 > **Feature:** Retrieve user <br />
@@ -115,5 +115,5 @@ GET /user/
 
 #### Response and expected result
 
-Status 200<br />
-Match Response Body
+- Status 200<br />
+- Match Response Body
