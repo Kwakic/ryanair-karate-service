@@ -80,7 +80,7 @@ My test cases fall into the following general test scenario groups:
 
 ## REST API - Test Action Description
 
-Users already created from your database haven't been used in my testing: ``` [
+Ryanair's database users haven't been used in my testing: ``` [
   {
     "email": "pepe@pepe.pe1",
     "name": "pepe",
@@ -131,10 +131,10 @@ GET /user
 #### Success Response
 
 200
-* Content-Type: application/json;charset=UTF-8<br />
-* Date: Tue, 25 Feb 2020 19:22:05 GMT<br />
-* Transfer-Encoding: chunked<br />
-* {"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.28277068320608967","bookings":[]}
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 19:22:05 GMT<br />
+Transfer-Encoding: chunked<br />
+{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.28277068320608967","bookings":[]}
 
 ### Feature: Retrieve user 
 
@@ -145,15 +145,33 @@ GET /user
 
 http://127.0.0.1:8900
 
-
 #### Request
 
 GET /user/all
 
 #### Success Response
 
-* 200
-* Content-Type: application/json;charset=UTF-8<br />
-* Date: Tue, 25 Feb 2020 19:50:18 GMT<br />
-* Transfer-Encoding: chunked<br />
-* [{"email":"pepe@pepe.pe1","name":"pepe","id":"pepe@pepe.pe1-0.1","bookings":[]},{"email":"pepe@pepe.pe2","name":"pepe","id":"pepe@pepe.pe1-0.2","bookings":[]},{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.5880371756313284","bookings":[]},{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.02145571254840939","bookings":[]}]
+200
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 19:50:18 GMT<br />
+Transfer-Encoding: chunked<br />
+[{"email":"pepe@pepe.pe1","name":"pepe","id":"pepe@pepe.pe1-0.1","bookings":[]},{"email":"pepe@pepe.pe2","name":"pepe","id":"pepe@pepe.pe1-0.2","bookings":[]},{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.5880371756313284","bookings":[]},{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.02145571254840939","bookings":[]}]
+
+
+> **Scenario:** Get a user with error and status 404
+
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+GET /user
+
+#### Success Response
+
+404<br />
+Content-Length: 14<br />
+Content-Type: text/plain;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 20:00:36 GMT<br />
+User not found<br />
