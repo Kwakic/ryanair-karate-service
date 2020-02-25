@@ -94,9 +94,12 @@ POST /user
 
 
 #### Success Response
+201 <br />
+Content-Type: application/json;charset=UTF-8 <br />
+Date: Tue, 25 Feb 2020 19:12:40 GMT <br />
+Transfer-Encoding: chunked <br />
+{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.728979976489025","bookings":[]} <br />
 
-- Status 201<br />
-- Print response for further use<br />
 
 
 ### Feature: Retrieve user <br />
@@ -113,8 +116,11 @@ GET /user
 
 #### Success Response
 
-- Status 200<br />
-- Match Response Body
+200
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 19:22:05 GMT<br />
+Transfer-Encoding: chunked<br />
+{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.28277068320608967","bookings":[]}
 
 ### Feature: Retrieve user 
 
