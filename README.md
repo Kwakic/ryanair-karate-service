@@ -80,6 +80,10 @@ My test cases fall into the following general test scenario groups:
 1. All requests should return HTTP status code
 
 2. Returned status code that I could validate:
-- HTTP 200, HTTP 201, HTTP 400, HTTP 404, HTTP 409, HTTP 500, 
-* Non A pplicable *HTTP 401	and 403	N/A in these tests*
+- HTTP 200, HTTP 201, HTTP 400, HTTP 404, HTTP 409, HTTP 500. 
+- Non Applicable status codes HTTP 401	and 403	N/A in these tests.
+
+#### REST API
+
+
 
