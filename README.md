@@ -122,6 +122,7 @@ GET
 - Match Response Body
 
 ### Feature: Retrieve user 
+
 > **Scenario:** Get all users
 
 
