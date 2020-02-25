@@ -85,18 +85,35 @@ My test cases fall into the following general test scenario groups:
 
 ## REST API - Test Action Description
 
-> **Feature:** Creating master user for tests<br />
+> **Feature:** Creating master user <br />
 > **Scenario:** Create a user with success
 
-#### Request
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request method and endpoint
 
 POST /user/
 
-#### Response
+#### Response and expected result
 
 Status 201<br />
-Print response for further use
+Print response for further use<br />
 
 
-> Feature: Creating master user for tests<br />
-> Scenario: Create a user with success
+> **Feature:** Retrieve user <br />
+> **Scenario:** Get a user by id
+
+### Request URL
+
+http://127.0.0.1:8900
+
+#### Request method and endpoint
+
+GET /user/
+
+#### Response and expected result
+
+Status 200<br />
+Match Response Body
