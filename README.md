@@ -85,8 +85,8 @@ My test cases fall into the following general test scenario groups:
 
 ## REST API - Test Action Description
 
-### Feature: Creating master user for tests
-### Scenario: Create a user with success
+> Feature: Creating master user for tests
+> Scenario: Create a user with success
 
 #### Request
 
@@ -94,10 +94,9 @@ POST /user/
 
 #### Response
 
-> Status 201<br />
-> Print response for further use
+Status 201<br />
+Print response for further use
 
 
-#### Feature: Creating master user for tests
-#### Scenario: Create a user with success
-
+> Feature: Creating master user for tests
+> Scenario: Create a user with success
