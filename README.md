@@ -53,7 +53,7 @@ Analyze the Swagger interface between booking-controller and user-controller and
 
 #### API TEST ACTIONS
 * Verify correct HTTP status code. <br /> 
-```	I checked if creating a resource returns HTTP 201 CREATED, HTTP 200 OK success status response, and unpermitted requests return 403 FORBIDDEN, 404 NOT FOUND, 500 INTERNAL SERVER ERROR, HTTP 409 CONFLICT RESPONSE STATUS etc.```
+  *	I checked if creating a resource returns HTTP 201 CREATED, HTTP 200 OK success status response, and unpermitted requests return 403 FORBIDDEN, 404 NOT FOUND, 500 INTERNAL SERVER ERROR, HTTP 409 CONFLICT RESPONSE STATUS etc.
 * Verify response payload. <br /> 
 ```	I checked if the JSON body is valid, if the fields are correctly named, and values are including error responses.```
 * Verify response headers.<br /> 
