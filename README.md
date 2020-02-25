@@ -80,7 +80,7 @@ My test cases fall into the following general test scenario groups:
 
 ## REST API - Test Action Description
 
-Users already created from your database haven't been used in my testing:  [
+Users already created from your database haven't been used in my testing: ``` [
   {
     "email": "pepe@pepe.pe1",
     "name": "pepe",
@@ -93,7 +93,7 @@ Users already created from your database haven't been used in my testing:  [
     "id": "pepe@pepe.pe1-0.2",
     "bookings": []
   },
-]
+]```
 
 **I decided to create my own users by making a print, therefore IDs will be different each time I run the test**
 
