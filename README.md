@@ -49,17 +49,17 @@ Running es.martinsvach.karate.TestRunner
 
 #### SWAGGER
 Analyze the Swagger interface between booking-controller and user-controller and make sure that endpoints are correctly named, that resources and their types correctly reflect the object model, that there is no missing functionality or duplicate functionality, and that relationships between resources are reflected in the API correctly. <br /> 
-```I apply mainly manual testing. ```
+```To do so, I applied mainly manual testing. ```
 
 #### API TEST ACTIONS
 * Verify correct HTTP status code. <br /> 
-  *	I checked if creating a resource returns HTTP 201 CREATED, HTTP 200 OK success status response, and unpermitted requests return 403 FORBIDDEN, 404 NOT FOUND, 500 INTERNAL SERVER ERROR, HTTP 409 CONFLICT RESPONSE STATUS etc.
+  *	For instance, I executed a POST request that creates a resource and returns an auto-generated identifier in its response. I then used this identifier to check if this resource is present in the list of elements received by a GET request.
 * Verify response payload. <br /> 
-```	I checked if the JSON body is valid, if the fields are correctly named, and values are including error responses.```
+  *	I checked if the JSON body is valid, if the fields are correctly named, and values are including error responses.
 * Verify response headers.<br /> 
-```In our case is only Content-Type = 'application/json' but I also checked in case there is one for security or login.```
+  * In our case is only **content-type": "application/json;charset=UTF-8** but I also checked in case there is one for security or login.
 * Verify basic performance sanity. <br /> 
-```I only could check if operation was completed successfully, such as checking amount of time.```
+  * I only could check if operation was completed successfully, such as checking amount of time.
 
 #### TEST SCENARIO CATEGORIES
 My test cases fall into the following general test scenario groups:
@@ -67,12 +67,7 @@ My test cases fall into the following general test scenario groups:
 *	Extended positive testing with optional parameters 
 *	Negative testing with valid input
 *	Negative testing with invalid input 
-*	Security, authorization, and permission tests (Not Role Permissions etc in these tests, I only could verify Content-Type to be in JSON format.) 
-
-#### TEST FLOWS
-*	Executing a single API request and checking the response accordingly. Such basic tests are the minimal building blocks we should start with, and there’s no reason to continue testing if these tests fail.
-
-*	Testing a series of requests which are common user actions, since some requests can rely on other ones. For example, I execute a POST request that creates a resource and returns an auto-generated identifier in its response. I then use this identifier to check if this resource is present in the list of elements received by a GET request.
+*	Security, authorization, and permission tests (Non Applicable in these test) 
 
 
 ## HTTP status codes 
@@ -81,20 +76,25 @@ My test cases fall into the following general test scenario groups:
 
 2. Returned status code that I was able to validate:
 - HTTP 200, HTTP 201, HTTP 400, HTTP 404, HTTP 409, HTTP 500. 
-- Non Applicable status codes HTTP 401	and 403	N/A in these tests.
+- Non Applicable status codes HTTP 401 and 403 in these tests.
 
 ## REST API - Test Action Description
 
-> **Feature:** Creating master user <br />
-> **Scenario:** Create a user with success
+### Feature: Creating master user <br />
+### Scenario: Create a user with success
 
 #### Request URL
 
 http://127.0.0.1:8900
 
-#### Request method and endpoint
+#### Endpoint
+
+/user/
+
+#### Request method
 
 POST /user/
+
 
 #### Response and expected result
 
@@ -109,9 +109,13 @@ POST /user/
 
 http://127.0.0.1:8900
 
-#### Request method and endpoint
+#### Endpoint
 
-GET /user/
+/user/
+
+#### Request method 
+
+GET 
 
 #### Response and expected result
 
