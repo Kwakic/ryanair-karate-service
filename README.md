@@ -87,37 +87,31 @@ My test cases fall into the following general test scenario groups:
 
 http://127.0.0.1:8900
 
-#### Endpoint
 
-/user/
+#### Request 
 
-#### Request method
-
-POST 
+POST /user
 
 
-#### Response and expected result
+#### Success Response
 
 - Status 201<br />
 - Print response for further use<br />
 
 
-> **Feature:** Retrieve user <br />
+### Feature: Retrieve user <br />
 > **Scenario:** Get a user by id
 
 #### Request URL
 
 http://127.0.0.1:8900
 
-#### Endpoint
 
-/user/
+#### Request 
 
-#### Request method 
+GET /user
 
-GET 
-
-#### Response and expected result
+#### Success Response
 
 - Status 200<br />
 - Match Response Body
@@ -131,11 +125,12 @@ GET
 
 http://127.0.0.1:8900
 
-#### Request method and endpoint
+
+#### Request
 
 GET /user/all
 
-#### Response and expected result
+#### Success Response
 
 - Status 200<br />
 - Match Response Body with all users created<br />
