@@ -94,8 +94,8 @@ POST /user/
 
 #### Response
 
-Status 201<br />
-Print response for further use
+> Status 201<br />
+> Print response for further use
 
 
 #### Feature: Creating master user for tests
