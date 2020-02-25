@@ -95,7 +95,7 @@ Users already created from your database haven't been used in my testing: ``` [
   },
 ]```
 
-**I decided to create my own users by making a print, therefore IDs will be different each time I run the test**
+**Instead I decided to create my own users by making a print, therefore IDs will be different each time I run the test**
 
 ### Feature: Creating master user and make print for further use
 >**Scenario:** Create a user with success
@@ -131,10 +131,10 @@ GET /user
 #### Success Response
 
 200
-Content-Type: application/json;charset=UTF-8<br />
-Date: Tue, 25 Feb 2020 19:22:05 GMT<br />
-Transfer-Encoding: chunked<br />
-{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.28277068320608967","bookings":[]}
+* Content-Type: application/json;charset=UTF-8<br />
+* Date: Tue, 25 Feb 2020 19:22:05 GMT<br />
+* Transfer-Encoding: chunked<br />
+* {"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.28277068320608967","bookings":[]}
 
 ### Feature: Retrieve user 
 
@@ -152,5 +152,8 @@ GET /user/all
 
 #### Success Response
 
-- Status 200<br />
-- Match Response Body with all users created<br />
+* 200
+* Content-Type: application/json;charset=UTF-8<br />
+* Date: Tue, 25 Feb 2020 19:50:18 GMT<br />
+* Transfer-Encoding: chunked<br />
+* [{"email":"pepe@pepe.pe1","name":"pepe","id":"pepe@pepe.pe1-0.1","bookings":[]},{"email":"pepe@pepe.pe2","name":"pepe","id":"pepe@pepe.pe1-0.2","bookings":[]},{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.5880371756313284","bookings":[]},{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.02145571254840939","bookings":[]}]
