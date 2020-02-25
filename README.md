@@ -80,18 +80,33 @@ My test cases fall into the following general test scenario groups:
 
 ## REST API - Test Action Description
 
-### Feature: Creating master user 
+Users already created from your database haven't been used in my testing:  [
+  {
+    "email": "pepe@pepe.pe1",
+    "name": "pepe",
+    "id": "pepe@pepe.pe1-0.1",
+    "bookings": []
+  },
+  {
+    "email": "pepe@pepe.pe2",
+    "name": "pepe",
+    "id": "pepe@pepe.pe1-0.2",
+    "bookings": []
+  },
+]
+
+**I decided to create my own users by making a print, therefore IDs will be different each time I run the test**
+
+### Feature: Creating master user and make print for further use
 >**Scenario:** Create a user with success
 
 #### Request URL
 
 http://127.0.0.1:8900
 
-
 #### Request 
 
 POST /user
-
 
 #### Success Response
 201 <br />
@@ -108,7 +123,6 @@ Transfer-Encoding: chunked <br />
 #### Request URL
 
 http://127.0.0.1:8900
-
 
 #### Request 
 
