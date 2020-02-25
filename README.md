@@ -75,15 +75,28 @@ My test cases fall into the following general test scenario groups:
 *	Testing a series of requests which are common user actions, since some requests can rely on other ones. For example, I execute a POST request that creates a resource and returns an auto-generated identifier in its response. I then use this identifier to check if this resource is present in the list of elements received by a GET request.
 
 
-## Test Action Description
+## HTTP status codes 
 
 1. All requests should return HTTP status code
 
-2. Returned status code that I could validate:
+2. Returned status code that I was able to validate:
 - HTTP 200, HTTP 201, HTTP 400, HTTP 404, HTTP 409, HTTP 500. 
 - Non Applicable status codes HTTP 401	and 403	N/A in these tests.
 
-## REST API
+## REST API - Test Action Description
+
+* Feature: Creating master user for tests
+* Scenario: Create a user with success
+
+#### Request
+
+POST /user/
+
+#### Response
+
+Status 201<br />
+Print response for further use
+
 
 
 
