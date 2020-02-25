@@ -157,7 +157,7 @@ Date: Tue, 25 Feb 2020 19:50:18 GMT<br />
 Transfer-Encoding: chunked<br />
 [{"email":"pepe@pepe.pe1","name":"pepe","id":"pepe@pepe.pe1-0.1","bookings":[]},{"email":"pepe@pepe.pe2","name":"pepe","id":"pepe@pepe.pe1-0.2","bookings":[]},{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.5880371756313284","bookings":[]},{"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.02145571254840939","bookings":[]}]
 
-
+### Feature: Retrieve user 
 > **Scenario:** Get a user with error and status 404
 
 #### Request URL
@@ -168,10 +168,255 @@ http://127.0.0.1:8900
 
 GET /user
 
-#### Success Response
+#### Error Response
 
 404<br />
 Content-Length: 14<br />
 Content-Type: text/plain;charset=UTF-8<br />
 Date: Tue, 25 Feb 2020 20:00:36 GMT<br />
 User not found<br />
+
+
+### Feature: Retrieve user 
+> **Scenario Outline:** Create a user with error and status 500
+
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+GET /user
+
+#### Error Response
+500<br />
+Connection: close<br />
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 20:10:39 GMT<br />
+Transfer-Encoding: chunked<br />
+{"timestamp":"2020-02-25T20:10:40.072+0000","status":500,"error":"Internal Server Error","message":"malformed email","path":"/user"}
+
+
+### Feature: Retrieve user 
+> **Scenario Outline:** Create a user with error and status 400
+
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+POST /user
+
+#### Error Response
+
+```UNABLE TO SEE A RESULT!!!!!!!!!!!!!```
+
+
+### Feature: Retrieve user 
+> **Scenario Outline:** Create a user with error and status 409
+
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+POST /user
+
+#### Error Response
+
+409<br />
+Content-Length: 12<br />
+Content-Type: text/plain;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 20:32:49 GMT<br />
+Check fields
+
+### Feature: Manage booking
+> **Scenario Outline:** Create boooking user with success
+
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+POST /booking
+
+#### Success Response
+
+201
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 20:38:51 GMT<br />
+Transfer-Encoding: chunked<br />
+{"idBooking":"PRG-MAD-0.802399791275208","idUser":"example@mixmail.com-0.8706070582301552","origin":"PRG","destination":"MAD","date":"2025-01-29"}
+
+
+### Feature: Manage booking
+> **Scenario Outline:** Create boooking user with Internal Server Error
+
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+POST /booking
+
+#### Error Response
+
+500<br />
+Connection: close<br />
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 20:41:48 GMT<br />
+Transfer-Encoding: chunked<br />
+{"timestamp":"2020-02-25T20:41:48.620+0000","status":500,"error":"Internal Server Error","message":"could not execute statement; SQL [n/a]; constraint [\"FKTDE8EDPC976R2GJVN4RY5V9M7: PUBLIC.BOOKING FOREIGN KEY(ID_USER) REFERENCES PUBLIC.USER(ID) ('any')\"; SQL statement:\ninsert into booking (date, destination, id_user, origin, id_booking) values (?, ?, ?, ?, ?) [23506-196]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement","path":"/booking"}
+
+
+
+### Feature: Manage booking
+> **Scenario Outline:** Get booking info by inserting valid ID leaving date empty
+
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+GET /booking
+
+#### Success Response
+
+200
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 21:11:46 GMT<br />
+Transfer-Encoding: chunked<br />
+[{"idBooking":"PRG-MAD-0.7691706964168324","idUser":"example@mixmail.com-0.5451029768190258","origin":"PRG","destination":"MAD","date":"2025-01-29"}]
+
+
+### Feature: Manage booking
+> **Scenario Outline:** Get booking info by inserting valid ID without date 
+
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+GET /booking
+
+#### Success Response
+200<br />
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 21:14:36 GMT<br />
+Transfer-Encoding: chunked<br />
+[{"idBooking":"PRG-MAD-0.5550643715440788","idUser":"example@mixmail.com-0.8064063999369496","origin":"PRG","destination":"MAD","date":"2025-01-29"}]
+
+
+### Feature: Manage booking
+> **Scenario Outline:** Get booking info by inserting valid date leaving ID empty
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+GET /booking
+
+#### Success Response
+200
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 21:20:34 GMT<br />
+Transfer-Encoding: chunked<br />
+[{"idBooking":"PRG-MAD-0.4463368407864515","idUser":"example@mixmail.com-0.710428531570816","origin":"PRG","destination":"MAD","date":"2025-01-29"}]
+
+
+### Feature: Manage booking
+> **Scenario Outline:** Get booking info by insterting valid date without ID
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+GET /booking
+
+#### Success Response
+200
+Content-Type: application/json;charset=UTF-8
+Date: Tue, 25 Feb 2020 21:23:38 GMT
+Transfer-Encoding: chunked
+[{"idBooking":"PRG-MAD-0.01566791471779827","idUser":"example@mixmail.com-0.9520295290286177","origin":"PRG","destination":"MAD","date":"2025-01-29"}]
+
+
+### Feature: Manage booking
+> **Scenario Outline:** Get booking info by inserting valid date and ID, and match response body
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+GET /booking
+
+#### Success Response
+200
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 21:28:57 GMT<br />
+Transfer-Encoding: chunked<br />
+[{"idBooking":"PRG-MAD-0.22256632795012665","idUser":"example@mixmail.com-0.31897199215460625","origin":"PRG","destination":"MAD","date":"2025-01-29"}]
+
+
+### Feature: Manage booking
+> **Scenario Outline:** Get empty response inserting invalid inputs
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+GET /booking
+
+#### Success Response
+200
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 21:32:26 GMT<br />
+Transfer-Encoding: chunked<br />
+[]
+
+### Feature: Manage booking
+> **Scenario Outline:** Invalid date format with response error 500 
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+GET /booking
+
+#### Error Response
+500<br />
+Connection: close<br />
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 21:34:20 GMT<br />
+Transfer-Encoding: chunked<br />
+{"timestamp":"2020-02-25T21:34:21.548+0000","status":500,"error":"Internal Server Error","message":"Format date not valid","path":"/booking"}
+
+
+### Feature: Manage booking
+> **Scenario Outline:** Bad request date and id empty status 400
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request
+
+GET /booking
+
+#### Error Response
+400<br />
+Connection: close<br />
+Content-Length: 30<br />
+Content-Type: text/plain;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 21:36:02 GMT<br />
+Bad request: date and id empty
