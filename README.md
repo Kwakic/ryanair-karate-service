@@ -80,7 +80,8 @@ My test cases fall into the following general test scenario groups:
 
 ## REST API - Test Action Description
 
-### Feature: Creating master user / Scenario: Create a user with success
+### Feature: Creating master user 
+>**Scenario:** Create a user with success
 
 #### Request URL
 
@@ -123,7 +124,7 @@ GET
 
 ### Feature: Retrieve user 
 
-> **Scenario:** Get all users
+>**Scenario:** Get all users
 
 
 #### Request URL
