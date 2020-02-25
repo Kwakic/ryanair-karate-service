@@ -2,11 +2,11 @@
 
 Booking Controller and User Controller
 
-## Getting Started
+## Getting Started/Install
 
 This project is built over **Java** language, **Maven** build automation tool and **Karate** framework to perform testing tasks.<br /> 
 
-### Running the tests
+### Run the tests
 To launch application's tests developed under Karate framework, you must run the command: **mvn clean test** , under the root directory of the project:
 
 ```
@@ -59,7 +59,7 @@ Analyze the Swagger interface between booking-controller and user-controller and
 * Verify response headers.<br /> 
 ```In our case is only Content-Type = 'application/json' but I also checked in case there is one for security or login.```
 * Verify basic performance sanity. <br /> 
-```I checked if operation was completed successfully, such as checking amount of time.```
+```I only could check if operation was completed successfully, such as checking amount of time.```
 
 #### TEST SCENARIO CATEGORIES
 My test cases fall into the following general test scenario groups:
@@ -77,9 +77,8 @@ My test cases fall into the following general test scenario groups:
 
 ## Test Action Description
 
-1. All requests should return 2XX HTTP status code
+1. All requests should return HTTP status code
 
-2. Returned status code is according to spec: 
-– 200 OK for GET requests
-– 201 for POST or PUT requests creating a new resource 
+2. Returned status code that I could validate:
+- HTTP 200, HTTP 201, HTTP 400, HTTP 404, HTTP 409, HTTP 500, *HTTP 401	and 403	N/A in these tests*
 
