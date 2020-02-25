@@ -72,17 +72,15 @@ My test cases fall into the following general test scenario groups:
 
 ## HTTP status codes 
 
-- All requests should return HTTP status code.
+* All requests should return HTTP status code.
 
-- Returned status code that I was able to validate:
-
- - HTTP 200, HTTP 201, HTTP 400, HTTP 404, HTTP 409, HTTP 500. 
- - Non Applicable status codes HTTP 401 and 403 in these tests.
+* Returned status code that I was able to validate:
+  * HTTP 200, HTTP 201, HTTP 400, HTTP 404, HTTP 409, HTTP 500. 
+  * Non Applicable status codes HTTP 401 and 403 in these tests.
 
 ## REST API - Test Action Description
 
-### Feature: Creating master user
-### Scenario: Create a user with success
+### Feature: Creating master user / Scenario: Create a user with success
 
 #### Request URL
 
@@ -123,7 +121,8 @@ GET
 - Status 200<br />
 - Match Response Body
 
-### Feature: Retrieve user > **Scenario:** Get all users
+### Feature: Retrieve user 
+> **Scenario:** Get all users
 
 
 #### Request URL
