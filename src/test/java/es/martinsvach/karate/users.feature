@@ -32,3 +32,13 @@ Feature: Test Ryanair Users API
 	  | name        | email 							|
     | Ricardo001  | mixmail.com   			|
     | Ricardo002  | tooropmixmail.com   |
+
+  
+
+Scenario Outline: Create a user with error Content Type
+    Given url baseUrl
+    And path 'user'
+    And header Content-Type = 'application/json'
+    And request { name: 'pot pope', email: 'examggple@mail.com' }
+    When method post
+    Then status 401m
