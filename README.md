@@ -105,7 +105,7 @@ POST /user/
 > **Feature:** Retrieve user <br />
 > **Scenario:** Get a user by id
 
-### Request URL
+#### Request URL
 
 http://127.0.0.1:8900
 
@@ -117,3 +117,19 @@ GET /user/
 
 - Status 200<br />
 - Match Response Body
+
+> **Feature:** Retrieve user <br />
+> **Scenario:** Get all users
+
+#### Request URL
+
+http://127.0.0.1:8900
+
+#### Request method and endpoint
+
+GET /user/all
+
+#### Response and expected result
+
+- Status 200<br />
+- Match Response Body with all users created<br />
