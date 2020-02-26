@@ -97,8 +97,9 @@ Default Ryanair's database users haven't been used in my testing: ``` [
 
 **Instead I decided to create my own users by executing a previous Background step, therefore IDs will be different each time I run the test**
 
+
 ### Feature: Creating master user and make print for further use
->**Scenario:** Create a user with success
+>**Scenario:** Creating master user
 
 #### Request URL
 
@@ -116,7 +117,6 @@ Transfer-Encoding: chunked <br />
 {"email":"example@mixmail.com","name":"Chris Hope","id":"example@mixmail.com-0.728979976489025","bookings":[]} <br />
 
 
-
 ### Feature: Retrieve user <br />
 > **Scenario:** Get a user by id
 
@@ -126,9 +126,10 @@ http://127.0.0.1:8900
 
 #### Request 
 
-GET /user?id=<user_id>
+GET /user
 
 #### Success Response
+
 
 200
 Content-Type: application/json;charset=UTF-8<br />
@@ -151,7 +152,7 @@ GET /user/all
 
 #### Success Response
 
-200
+200<br />
 Content-Type: application/json;charset=UTF-8<br />
 Date: Tue, 25 Feb 2020 19:50:18 GMT<br />
 Transfer-Encoding: chunked<br />
@@ -166,7 +167,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /user?id=<not_valid_user_id>
+GET /user
 
 #### Error Response
 
@@ -178,43 +179,53 @@ User not found<br />
 
 
 ### Feature: Retrieve user 
-> **Scenario Outline:** Create a user with error and status 500
-
+> **Scenario Outline:** Create a user with error
 #### Request URL
 
 http://127.0.0.1:8900
 
 #### Request
 
-POST /user
+GET /user
 
 #### Error Response
+
+201<br />
+Content-Type: application/json;charset=UTF-8<br />
+Date: Wed, 26 Feb 2020 10:24:13 GMT<br />
+Transfer-Encoding: chunked<br />
+{"email":"martin@mixmail.com","name":"Martin001","id":"martin@mixmail.com-0.08013469343403223","bookings":[]}<br /><br />
+
+
 500<br />
 Connection: close<br />
 Content-Type: application/json;charset=UTF-8<br />
-Date: Tue, 25 Feb 2020 20:10:39 GMT<br />
+Date: Wed, 26 Feb 2020 10:24:13 GMT<br />
 Transfer-Encoding: chunked<br />
-{"timestamp":"2020-02-25T20:10:40.072+0000","status":500,"error":"Internal Server Error","message":"malformed email","path":"/user"}
+{"timestamp":"2020-02-26T10:24:14.725+0000","status":500,"error":"Internal Server Error","message":"malformed email","path":"/user"}<br /><br />
 
-
-### Feature: Retrieve user 
-> **Scenario Outline:** Create a user with error and status 409
-
-#### Request URL
-
-http://127.0.0.1:8900
-
-#### Request
-
-POST /user
-
-#### Error Response
 
 409<br />
 Content-Length: 12<br />
 Content-Type: text/plain;charset=UTF-8<br />
-Date: Tue, 25 Feb 2020 20:32:49 GMT<br />
-Check fields
+Date: Wed, 26 Feb 2020 10:24:13 GMT<br />
+Check fields<br /><br />
+
+
+409<br />
+Content-Length: 12<br />
+Content-Type: text/plain;charset=UTF-8<br />
+Date: Wed, 26 Feb 2020 10:24:14 GMT<br />
+Check fields<br /><br />
+
+
+409<br />
+Content-Length: 12<br />
+Content-Type: text/plain;charset=UTF-8<br />
+Date: Wed, 26 Feb 2020 10:24:14 GMT<br />
+Check fields<br />
+
+
 
 ### Feature: Manage booking
 > **Scenario Outline:** Create user's booking with success
@@ -229,7 +240,7 @@ POST /booking
 
 #### Success Response
 
-201
+201<br />
 Content-Type: application/json;charset=UTF-8<br />
 Date: Tue, 25 Feb 2020 20:38:51 GMT<br />
 Transfer-Encoding: chunked<br />
@@ -237,7 +248,7 @@ Transfer-Encoding: chunked<br />
 
 
 ### Feature: Manage booking
-> **Scenario Outline:** Create user's booking with Internal Server Error
+> **Scenario Outline:** Create boooking user with Internal Server Error
 
 #### Request URL
 
@@ -267,11 +278,11 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking?id=<user_id>
+GET /booking
 
 #### Success Response
 
-200
+200<br />
 Content-Type: application/json;charset=UTF-8<br />
 Date: Tue, 25 Feb 2020 21:11:46 GMT<br />
 Transfer-Encoding: chunked<br />
@@ -287,7 +298,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking?id=<user_id>
+GET /booking
 
 #### Success Response
 200<br />
@@ -305,10 +316,10 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking?date=<valid_date_format>
+GET /booking
 
 #### Success Response
-200
+200<br />
 Content-Type: application/json;charset=UTF-8<br />
 Date: Tue, 25 Feb 2020 21:20:34 GMT<br />
 Transfer-Encoding: chunked<br />
@@ -323,14 +334,16 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking?date=<valid_date_format>
+GET /booking
 
 #### Success Response
-200
-Content-Type: application/json;charset=UTF-8
-Date: Tue, 25 Feb 2020 21:23:38 GMT
-Transfer-Encoding: chunked
+200<br />
+Content-Type: application/json;charset=UTF-8<br />
+Date: Tue, 25 Feb 2020 21:23:38 GMT<br />
+Transfer-Encoding: chunked<br />
 [{"idBooking":"PRG-MAD-0.01566791471779827","idUser":"example@mixmail.com-0.9520295290286177","origin":"PRG","destination":"MAD","date":"2025-01-29"}]
+
+
 
 
 ### Feature: Manage booking
@@ -341,10 +354,10 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking?id=<user_id>&date=<valid_date_format>
+GET /booking
 
 #### Success Response
-200
+200<br />
 Content-Type: application/json;charset=UTF-8<br />
 Date: Tue, 25 Feb 2020 21:28:57 GMT<br />
 Transfer-Encoding: chunked<br />
@@ -359,48 +372,47 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking?id=<invalid_user_id>&date=<valid_date_format>
-
-#### Success Response
-200
-Content-Type: application/json;charset=UTF-8<br />
-Date: Tue, 25 Feb 2020 21:32:26 GMT<br />
-Transfer-Encoding: chunked<br />
-[]
-
-### Feature: Manage booking
-> **Scenario Outline:** Invalid date format with response error 500 
-#### Request URL
-
-http://127.0.0.1:8900
-
-#### Request
-
-GET /booking?date=<invalid_date_format>
-
-#### Error Response
-500<br />
-Connection: close<br />
-Content-Type: application/json;charset=UTF-8<br />
-Date: Tue, 25 Feb 2020 21:34:20 GMT<br />
-Transfer-Encoding: chunked<br />
-{"timestamp":"2020-02-25T21:34:21.548+0000","status":500,"error":"Internal Server Error","message":"Format date not valid","path":"/booking"}
-
-
-### Feature: Manage booking
-> **Scenario Outline:** Bad request date and id empty status 400
-#### Request URL
-
-http://127.0.0.1:8900
-
-#### Request
-
 GET /booking
 
-#### Error Response
-400<br />
+#### Success/Error Response
+
+200<br />
+Content-Type: application/json;charset=UTF-8<br />
+Date: Wed, 26 Feb 2020 10:38:10 GMT<br />
+Transfer-Encoding: chunked<br />
+[]<br /><br />
+
+200<br />
+Content-Type: application/json;charset=UTF-8<br />
+Date: Wed, 26 Feb 2020 10:38:11 GMT<br />
+Transfer-Encoding: chunked<br />
+[]<br /><br />
+
+200<br />
+Content-Type: application/json;charset=UTF-8<br />
+Date: Wed, 26 Feb 2020 10:38:11 GMT<br />
+Transfer-Encoding: chunked<br />
+[]<br /><br />
+
+400
 Connection: close<br />
 Content-Length: 30<br />
 Content-Type: text/plain;charset=UTF-8<br />
-Date: Tue, 25 Feb 2020 21:36:02 GMT<br />
-Bad request: date and id empty
+Date: Wed, 26 Feb 2020 10:38:11 GMT<br />
+Bad request: date and id empty<br /><br />
+
+500<br />
+Connection: close<br />
+Content-Type: application/json;charset=UTF-8<br />
+Date: Wed, 26 Feb 2020 10:38:12 GMT<br />
+Transfer-Encoding: chunked<br />
+{"timestamp":"2020-02-26T10:38:12.708+0000","status":500,"error":"Internal Server Error","message":"Format date not valid","path":"/booking"}
+
+
+
+
+
+
+
+
+
