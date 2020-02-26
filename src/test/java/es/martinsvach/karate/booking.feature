@@ -8,7 +8,7 @@ Feature: Manage booking
     * def Desfrom = "PRG"
   	* def Desto = "MAD"
 
-  Scenario: Create boooking user with success
+  Scenario: Create user's booking with success
   * def booking =   
 """
     {
@@ -30,7 +30,7 @@ Feature: Manage booking
     And match response.destination == Desto
 
 
- Scenario: Create boooking user with Internal Server Error
+ Scenario: Create user's booking with Internal Server Error
   * def booking =   
 """
     {
