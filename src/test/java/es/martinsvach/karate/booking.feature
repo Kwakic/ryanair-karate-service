@@ -57,15 +57,16 @@ Feature: Manage booking
      }  
     """
 
-
   Scenario: Get booking info by inserting valid ID leaving date empty
     Given url baseUrl
     And path 'booking'
     And params { "id": "#(userid)", "date": "" }
     When method get
     Then status 200
+    And print userid
+    And print response
     And match response[*].idUser contains userid 
-  
+ 
    
   Scenario: Get booking info by inserting valid ID without date 
     Given url baseUrl
@@ -75,7 +76,6 @@ Feature: Manage booking
     Then status 200
     And match response[*].idUser contains userid 
 
-
   Scenario: Get booking info by inserting valid date leaving ID empty
     Given url baseUrl
     And path 'booking'
@@ -84,7 +84,6 @@ Feature: Manage booking
     Then status 200
     And match response[*].date contains testdate 
 
-
   Scenario: Get booking info by insterting valid date without ID
     Given url baseUrl
     And path 'booking'
@@ -92,7 +91,6 @@ Feature: Manage booking
     When method get
     Then status 200
     And match response[*].date contains testdate
-
    
   Scenario: Get booking info by inserting valid date and ID, and match response body
     Given url baseUrl
@@ -105,43 +103,17 @@ Feature: Manage booking
 
 
 Scenario Outline: Get empty response inserting invalid inputs
-
     Given url baseUrl
     And path 'booking'
     And params { id: '<id>', date: '<date>' }
     When method get
-    Then status 200
+    Then status <status>
     And match $ == <response>
 
 Examples:
-	| id       | date      |response|
-  | see      |           |  []    | 
-  | anything |2010-02-09 |  []    |  
-  |          |2010-02-18 |  []    |  
-
-
- Scenario: Invalid date format with response error 500 
-    Given url baseUrl
-    And path 'booking'
-    And params { id: '#(userid)', date: '2020-13-01' }
-    When method get
-    Then status 500 
-    And match $ == 
-   """
-     {
-  "timestamp": "#notnull",
-  "status": 500,
-  "error": "Internal Server Error",
-  "message": "Format date not valid",
-  "path": "/booking"
-     }
-   """
-
-Scenario: Bad request date and id empty status 400
-
-    Given url baseUrl
-    And path 'booking'
-    And params { id: null, date: null}
-    When method get
-    Then status 400 
-    And match $ == 'Bad request: date and id empty'
+	| id       | date      | status	|response																																																																	|
+  | see      |           |  200		|[]    	 																																																																	| 
+  | anything |2010-02-09 |  200		|[]    	 																																																																	|  
+  |          |2010-02-18 |  200		|[]    	 																																																																	| 
+  |          |					 |  400		|'Bad request: date and id empty'    																																																			| 
+  | #(userid)|2020-13-01 |  500		|{"timestamp": "#notnull", "status": 500,  "error": "Internal Server Error", "message": "Format date not valid", "path": "/booking" }    	| 

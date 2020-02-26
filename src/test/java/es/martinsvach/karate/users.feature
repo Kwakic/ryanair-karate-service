@@ -29,50 +29,22 @@ Feature: Retrieve user/s
     Then status 404
     And match response == "User not found"
 
-
-	  Scenario Outline: Create a user with error and status 500
-    Given url baseUrl
-    And path 'user'
-    And header Content-Type = 'application/json'
-    And request { name: '<name>', email: '<email>' }
-    When method post
-    Then status 500
-	  And match response == <response>
-	  
-	  Examples:
-	  | name       | email 							|response|
-    | Martin001  | mixmail.com   			|{"timestamp": "#notnull", "status": 500,"error": "Internal Server Error","message": "malformed email","path": "/user"	}        |
-    | Martin002  | hellopmixmail.com  |{"timestamp": "#notnull", "status": 500,"error": "Internal Server Error","message": "malformed email","path": "/user"	}        |
-
-
-    Scenario Outline: Create a user with error and status 400
-    Given url baseUrl
-    And path 'user'
-    And header Content-Type = 'application/json'
-    And request { email: 'ecfff@kdkd.com'}
-    When method post
-    Then status 400
-	  And match response == 
-    """
-  {
-  "timestamp": "#notnull",
-  "status": 400,
-  "error": "Bad Request",
-  "message": "#notnull",
-  "path": "/user"
-   }
-
-   """
-
-	  Scenario Outline: Create a user with error and status 409
+	  Scenario Outline: Create a user with error
     Given url baseUrl
     And path 'user'
     And header Content-Type = 'application/json'
     And request { name: '<name>', email: '<email>' }
     When method post
     Then status <status>
+	  And match response == <response>
 	  
 	  Examples:
-	  | name        | email 							|status|
-    |             | anything@yahoo.com  |409   |
+	  | name       | email 							|status |response																																																												|
+    | Martin001  | martin@mixmail.com |201		|	{"email": "martin@mixmail.com", "name": "Martin001","id": "#notnull","bookings": []	}        																	|
+    | Martin002  | hellopmixmail.com  |500    | {"timestamp": "#notnull", "status": 500,"error": "Internal Server Error","message": "malformed email","path": "/user"	}       |
+		|   				 | hellopmixmail.com  |409    | "Check fields"        																																																				|
+		| Martin002  | 								    |409    | "Check fields"        																																																				|
+		|  					 | 								    |409    | "Check fields"        																																																				|
+
+
     
