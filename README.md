@@ -305,7 +305,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking?date=<yyyy-mm-dd>
+GET /booking?date=<valid_date_format>
 
 #### Success Response
 200
@@ -323,7 +323,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking?date=<yyyy-mm-dd>
+GET /booking?date=<valid_date_format>
 
 #### Success Response
 200
@@ -341,7 +341,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking?id=<user_id>&date=<yyyy-mm-dd>
+GET /booking?id=<user_id>&date=<valid_date_format>
 
 #### Success Response
 200
@@ -359,7 +359,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking?id=<invalid_user_id>&date=<yyyy-mm-dd>
+GET /booking?id=<invalid_user_id>&date=<valid_date_format>
 
 #### Success Response
 200
@@ -376,7 +376,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking?date=<dd-mm-yyyy>
+GET /booking?date=<invalid_date_format>
 
 #### Error Response
 500<br />
