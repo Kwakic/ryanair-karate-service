@@ -1,13 +1,13 @@
 # API REST TESTING RYANAIR
 
-Booking Controller and User Controller
+Application that tests Ryanair's Booking and Users API
 
 ## Getting Started/Install
 
 This project is built over **Java** language, **Maven** build automation tool and **Karate** framework to perform testing tasks.<br /> 
 
 ### Run the tests
-To launch application's tests developed under Karate framework, you must run the command: **mvn clean test** , under the root directory of the project:
+To launch application's tests, you must run the Maven command: **mvn clean test** under the root directory of the project:
 
 ```
 C:\Users\mtp1946\Desktop\ryanair-karate-service-master>mvn clean test
@@ -76,11 +76,11 @@ My test cases fall into the following general test scenario groups:
 
 * Returned status code that I was able to validate:
   * HTTP 200, HTTP 201, HTTP 400, HTTP 404, HTTP 409, HTTP 500. 
-  * Non Applicable status codes HTTP 401 and 403 in these tests.
+  * Non Applicable status codes HTTP 401 and 403 in these tests because authorization and permission scenarios are not present
 
 ## REST API - Test Action Description
 
-Ryanair's database users haven't been used in my testing: ``` [
+Default Ryanair's database users haven't been used in my testing: ``` [
   {
     "email": "pepe@pepe.pe1",
     "name": "pepe",
@@ -95,7 +95,7 @@ Ryanair's database users haven't been used in my testing: ``` [
   },
 ]```
 
-**Instead I decided to create my own users by making a print, therefore IDs will be different each time I run the test**
+**Instead I decided to create my own users by executing a previous Background step, therefore IDs will be different each time I run the test**
 
 ### Feature: Creating master user and make print for further use
 >**Scenario:** Create a user with success
@@ -126,7 +126,7 @@ http://127.0.0.1:8900
 
 #### Request 
 
-GET /user
+GET /user?id=<user_id>
 
 #### Success Response
 
@@ -166,7 +166,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /user
+GET /user?id=<not_valid_user_id>
 
 #### Error Response
 
@@ -186,7 +186,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /user
+POST /user
 
 #### Error Response
 500<br />
@@ -195,22 +195,6 @@ Content-Type: application/json;charset=UTF-8<br />
 Date: Tue, 25 Feb 2020 20:10:39 GMT<br />
 Transfer-Encoding: chunked<br />
 {"timestamp":"2020-02-25T20:10:40.072+0000","status":500,"error":"Internal Server Error","message":"malformed email","path":"/user"}
-
-
-### Feature: Retrieve user 
-> **Scenario Outline:** Create a user with error and status 400
-
-#### Request URL
-
-http://127.0.0.1:8900
-
-#### Request
-
-POST /user
-
-#### Error Response
-
-```UNABLE TO SEE A RESULT!!!!!!!!!!!!!```
 
 
 ### Feature: Retrieve user 
@@ -233,7 +217,7 @@ Date: Tue, 25 Feb 2020 20:32:49 GMT<br />
 Check fields
 
 ### Feature: Manage booking
-> **Scenario Outline:** Create boooking user with success
+> **Scenario Outline:** Create user's booking with success
 
 #### Request URL
 
@@ -253,7 +237,7 @@ Transfer-Encoding: chunked<br />
 
 
 ### Feature: Manage booking
-> **Scenario Outline:** Create boooking user with Internal Server Error
+> **Scenario Outline:** Create user's booking with Internal Server Error
 
 #### Request URL
 
@@ -283,7 +267,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking
+GET /booking?id=<user_id>
 
 #### Success Response
 
@@ -303,7 +287,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking
+GET /booking?id=<user_id>
 
 #### Success Response
 200<br />
@@ -321,7 +305,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking
+GET /booking?date=<yyyy-mm-dd>
 
 #### Success Response
 200
@@ -339,7 +323,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking
+GET /booking?date=<yyyy-mm-dd>
 
 #### Success Response
 200
@@ -357,7 +341,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking
+GET /booking?id=<user_id>&date=<yyyy-mm-dd>
 
 #### Success Response
 200
@@ -375,7 +359,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking
+GET /booking?id=<invalid_user_id>&date=<yyyy-mm-dd>
 
 #### Success Response
 200
@@ -392,7 +376,7 @@ http://127.0.0.1:8900
 
 #### Request
 
-GET /booking
+GET /booking?date=<dd-mm-yyyy>
 
 #### Error Response
 500<br />
