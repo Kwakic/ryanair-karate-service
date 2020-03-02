@@ -4,7 +4,7 @@ Application that tests Ryanair's Booking and Users API
 
 ## Getting Started/Install
 
-This project is built over **Java** language, **Maven** build automation tool and **Karate** framework to perform testing tasks.<br /> 
+This project is built over **Java** language, **Maven** build automation tool and **Karate** framework to perform testing tasks (version: 0.6.0.<br /> 
 
 ### Run the tests
 To launch application's tests, you must run the Maven command: **mvn clean test** under the root directory of the project:
